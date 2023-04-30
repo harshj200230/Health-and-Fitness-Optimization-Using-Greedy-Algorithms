@@ -14,14 +14,14 @@ vector<int> item_selected;
 class User{
 
 	public:
-		string name ; 
+		string name ;
 		float age;
 		float weight;
 		float height;
 		float bmi;
 		char gender;
 
-		
+
 
 		User(string name,
 		float age,
@@ -82,7 +82,7 @@ double fractionalKnapsack_P(int W, class Item arr[], int N)
 	// Looping through all items
 	cout<<"Items to be consumed : "<<endl;
 	for (int i = 0; i < N; i++) {
-		
+
 		// If adding Item won't overflow,
 		// add it completely
 		if (arr[i].calories <= W) {
@@ -95,7 +95,7 @@ double fractionalKnapsack_P(int W, class Item arr[], int N)
 
 		// If we can't add current Item,
 		// add fractional part of it
-		
+
 		else {
 			double x =  arr[i].protein
 				* ((double)W / (double)arr[i].calories);
@@ -103,7 +103,7 @@ double fractionalKnapsack_P(int W, class Item arr[], int N)
 				+= x;
 			item_selected.push_back(arr[i].item_number) ;
 
-			cout<<arr[i].name<<" : "<<x<<"gm"<<endl;	
+			cout<<arr[i].name<<" : "<<x<<"gm"<<endl;
 			break;
 		}
 	}
@@ -125,7 +125,7 @@ double fractionalKnapsack_C(int W, class Item arr[], int N)
 	// Looping through all items
 	cout<<"Items to be consumed : "<<endl;
 	for (int i = 0; i < N; i++) {
-		
+
 		// If adding Item won't overflow,
 		// add it completely
 		if (arr[i].calories <= W) {
@@ -137,7 +137,7 @@ double fractionalKnapsack_C(int W, class Item arr[], int N)
 
 		// If we can't add current Item,
 		// add fractional part of it
-		
+
 		else {
 			double x =  arr[i].carbs
 				* ((double)W / (double)arr[i].calories);
@@ -145,7 +145,7 @@ double fractionalKnapsack_C(int W, class Item arr[], int N)
 				+= x;
 			item_selected.push_back(arr[i].item_number) ;
 
-			cout<<arr[i].name<<" : "<<x<<"gm"<<endl;	
+			cout<<arr[i].name<<" : "<<x<<"gm"<<endl;
 			break;
 		}
 	}
@@ -242,12 +242,12 @@ void Graph::greedyColoring(Item arr[])
 			{
 				cout<<"("<<arr[item_selected[i]].name<<","<<arr[item_selected[j]].name<<")"<<endl;
 			}
-			
+
 		}
-		
+
 	}
-	
-	
+
+
 }
 
 void final_edge_set(Graph &g1){
@@ -275,12 +275,67 @@ void final_edge_set(Graph &g1){
     g1.addEdge(10, 14);
     g1.addEdge(11, 13);
     g1.addEdge(12, 14);
-    
-    
-    
+
+
+
 
 }
 
+void calculate_sugar(float sugar)
+{
+	if(sugar<70)
+	{
+		cout<<"Your sugar is low!"<<endl<<endl;
+		cout<<"It is adviced that you should incorporate such meals in your diet:";
+		cout<<"1. Sugarcane-juice"<<endl;
+		cout<<"2. Dry fruits"<<endl;
+		cout<<"3. fruit-juice"<<endl;
+		cout<<"4. Candy"<<endl;
+		cout<<"5. Honey"<<endl;
+	}
+	else if(sugar>126)
+	{
+		cout<<"Your sugar is high! You are diabetic."<<endl<<endl;
+		cout<<"It is adviced that you should incorporate such meals in your diet:";
+		cout<<"1. Whole-wheat bread"<<endl;
+		cout<<"2. Garlic"<<endl;
+		cout<<"3. Fatty-fish"<<endl;
+		cout<<"4. Leafy-Green vegetables"<<endl;
+		cout<<"5. Blackberry"<<endl;
+		cout<<"Some light excercises and yoga is highly recommended."<<endl<<endl;
+	}
+	else
+	{
+		cout<<"Your sugar is normal."<<endl;
+		cout<<"No precautions needed. Just maintain a healthy balanced diet."<<endl<<endl;
+	}
+}
+
+void calculate_chol(float chol)
+{
+	if(chol>240)
+	{
+		cout<<"Your cholestrol-level is high!"<<endl<<endl;
+		cout<<"It is adviced that you should avoid eating:"<<endl;
+		cout<<"1. Deep-fried"<<endl;
+		cout<<"2. Junk food"<<endl;
+		cout<<"3. Processed food"<<endl;
+		cout<<"4. Full-cream milk"<<endl;
+		cout<<"5. Alcohol consumption or Smoking"<<endl<<endl;
+		cout<<"It is adviced that you should eat such meals in your diet:"<<endl;
+		cout<<"1. Whole-grains"<<endl;
+		cout<<"2. Beans"<<endl;
+		cout<<"3. Olive-oil"<<endl;
+		cout<<"4. Dark-chocolate"<<endl;
+		cout<<"5. Citrus-fruits"<<endl;
+		cout<<"Some light excercises and yoga is highly recommended."<<endl<<endl;
+	}
+	else
+	{
+		cout<<"Your cholestrol is normal."<<endl;
+	    cout<<"No precautions needed. Just maintain a healthy balanced diet."<<endl<<endl;
+	}
+}
 
 // Driver code
 int main()
@@ -295,7 +350,7 @@ int main()
 	int option;
 	cout<<"Enter your name : "<<endl;
 	cin>>name;
- 
+
 	cout<<"Enter your age (in years): "<<endl;
 	cin>>age;
 
@@ -325,8 +380,8 @@ int main()
 		cout<<"Sorry chakke!!"<<endl;
 		exit(0);
 	}
-	
-	
+
+
 
 	Item arr[] = { { 52,33 ,345,"Soya Chunk",0 }, { 3.4,4.8,61,"Milk",1 }, { 2.7,28,130,"Rice",2 },{ 10.9,70.7,381,"Oats",3 },{ 1.1,23,81,"Banana",4 },{ 10.62,0.69,153,"Omlette",5 }, { 9.02,20.13,130,"Pulses",6 },{ 27,0,165,"Chicken",7 },{ 22,0,84,"Fish",8 },{ 2.5,21,93,"Potato",9 },{ 10,1.2,83,"Tofu",10 }, { 3.1,46,300,"Roti",11 }, { 11.75,3.45,100,"Curd",12 },{ 10.5,50.4,272,"Multi-grain Bread",13 },{ 20,4.5,296,"Paneer",14 }};
 	int N = sizeof(arr) / sizeof(arr[0]);
@@ -334,19 +389,19 @@ int main()
 	cout<<"Choose your goal : "<<endl;
 	cout<<"1. Gain lean muscle mass"<<endl;
 	cout<<"2. Gain weight "<<endl;
-	cin>> option ; 
+	cin>> option ;
 	cout<< "Your calorie intake per day should be : "<<cal_intake<<endl;
 	switch (option)
 	{
 	case 1:
 		cout <<"Protein obtained : "<< fractionalKnapsack_P(cal_intake, arr, N)<<endl<<endl;
 		break;
-	
-	case 2 : 
+
+	case 2 :
 		cout <<"Carbs obtained : "<< fractionalKnapsack_C(cal_intake, arr, N)<<endl<<endl;
 		break;
 	}
-	
+
 for (int  i = 0; i < item_selected.size(); i++)
 {
 	cout<<item_selected[i]<<"  ";
@@ -355,8 +410,18 @@ for (int  i = 0; i < item_selected.size(); i++)
 	Graph g1(size1);
     final_edge_set(g1);
 
-	
+
 	// cout << "Coloring of graph 1 \n";
 	g1.greedyColoring( arr);
+
+	//-------------------------------------------------------------------------------------------------------
+	cout<<"Enter further information for further advice:";
+	float sugar,chol;
+	cout<<"Enter your sugar-level(mg/dl):"<<endl;
+	cin>>sugar;
+	cout<<"Enter your cholestrol-level(mg/dl):"<<endl;
+	cin>>chol;
+	calculate_sugar(sugar);
+	calculate_chol(chol);
 	return 0;
 }
